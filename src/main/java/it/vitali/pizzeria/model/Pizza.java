@@ -23,6 +23,7 @@ public class Pizza {
 	@Column(name = "immagine")
 	private String url;
 	
+	@Column(columnDefinition = "float(6,2)")
 	private float prezzo;	
 	
 	

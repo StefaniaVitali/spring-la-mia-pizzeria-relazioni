@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<title>Thymeleaf Fragments: home</title>
+	<!--/*/ <th:block th:include="fragments/general.html :: headerfiles">
+	        </th:block> /*/-->
+	</head>
+<body>
+	<a
+	th:fragment="button(link, title)"
+	th:href="@{link}"
+	th:text="${title}"
+	class="btn btn-primary"
+	>
+	</a>
+	
+	<h2 th:fragment="titolone">Titolo frammento di prova</h2>
+	
+    <h2 th:fragment="titolone">Ciaone</h2>
+</body>
+
+</html>
+
