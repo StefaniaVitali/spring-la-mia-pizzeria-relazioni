@@ -12,29 +12,44 @@
 </head>
 
 <body>
-	<h1>La mia pizzeria!</h1>
-	
-	<!-- prova inserimento frammento con collegamento del file-->
-	<a th:replace="fragments :: button('/', 'Back')"></a>
+	<div class="container">
+		<h1 class="text-center">La mia pizzeria!</h1>
 
-	<table 	class="table table-striped">
-        <thead>
-			<tr>
-				<th>NOME</th>
-				<th>DESCRIZIONE</th>
-				<th>IMMAGINE</th>
-				<th>PREZZO</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each ="p : ${list}">
-				<th th:text="${p.nome}"></th>
-				<th th:text="${p.descrizione}"></th>
-				<th><img height="150" width="150" alt="immagine_pizza" th:src="${p.url}" /></th>
-				<th th:text="|${p.prezzo} euro|"></th>
-			</tr>
-		</tbody>
-	</table>
+		<div class="col-3 mb-3">
+			<label for="search-pizza" class="form-label">Cerca la tua pizza</label>
+			<input type="text" id="search-pizza" class="form-control">
+		</div>
+		<div class="col-2 mb-3">		
+			<!-- prova inserimento frammento con collegamento del file-->
+			<a th:replace="fragments :: button('/', 'Cerca la tua pizza')"></a>
+		</div>
+
+		<div th:if="${list.size() > 0}">
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>NOME</th>
+						<th>DESCRIZIONE</th>
+						<th>IMMAGINE</th>
+						<th>PREZZO</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="p : ${list}">
+						<th th:text="${p.nome}"></th>
+						<th th:text="${p.descrizione}"></th>
+						<th><img height="150" width="150" alt="immagine_pizza" th:src="${p.url}" /></th>
+						<th th:text="|${p.prezzo} euro|"></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div th:unless="${list.size() > 0}"> Non ci sono pizze presenti nella lista</div>
+
+
+	</div>
 
 	<!-- Bootstrap Bundle with Popper -->
 	<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
