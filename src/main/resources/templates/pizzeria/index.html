@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Bootstrap CSS -->
 	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<title>La mia pizzeria CRUD</title>
 </head>
 
@@ -19,7 +20,7 @@
 			<label for="search-pizza" class="form-label">Cerca la tua pizza</label>
 			<input type="text" id="search-pizza" class="form-control">
 		</div>
-		<div class="col-2 mb-3">		
+		<div class="col-2 mb-3">
 			<!-- prova inserimento frammento con collegamento del file-->
 			<a th:replace="fragments :: button('/', 'Cerca la tua pizza')"></a>
 		</div>
@@ -33,6 +34,7 @@
 						<th>DESCRIZIONE</th>
 						<th>IMMAGINE</th>
 						<th>PREZZO</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +43,10 @@
 						<th th:text="${p.descrizione}"></th>
 						<th><img height="150" width="150" alt="immagine_pizza" th:src="${p.url}" /></th>
 						<th th:text="|${p.prezzo} euro|"></th>
+						<th><a class="btn btn-primary" target="_blank" th:href="@{|/pizzeria/show/${p.id}|}"> 
+							<i class="bi bi-search"></i>
+							</a>
+						</th>
 					</tr>
 				</tbody>
 			</table>

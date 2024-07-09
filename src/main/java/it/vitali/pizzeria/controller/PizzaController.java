@@ -45,6 +45,14 @@ public class PizzaController {
 		return "pizzeria/show";
 	}
 	
+	@GetMapping("/create")
+	public String create(Model model) {
+		
+		model.addAttribute("pizza", new Pizza());
+		
+		return "pizzeria/create";
+	}
+	
 
 //fine classe
 }
