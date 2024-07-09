@@ -5,6 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import jakarta.persistence.Id;
 
 
@@ -16,13 +19,19 @@ public class Pizza {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank(message="il campo nome deve essere compilato")
+	@Size(max=50)
 	private String nome;
 	
+	@NotBlank(message="il campo descrizione deve essere compilato")
+	@Size(max=200)
 	private String descrizione;
 	
 	@Column(name = "immagine")
 	private String url;
 	
+	@NotBlank(message= "il campo prezzo deve essere compilato")
+	@Min(3)
 	@Column(columnDefinition = "float(6,2)")
 	private float prezzo;	
 	
