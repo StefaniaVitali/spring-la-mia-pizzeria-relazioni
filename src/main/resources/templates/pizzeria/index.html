@@ -43,7 +43,7 @@
 						<th th:text="${p.nome}"></th>
 						<th th:text="${p.descrizione}"></th>
 						<th><img height="150" width="150" alt="immagine_pizza" th:src="${p.url}" /></th>
-						<th th:text="|${p.prezzo} euro|"></th>
+						<th th:text="| € ${#numbers.formatDecimal(p.prezzo, 1, 2, 'COMMA')}|"></th>
 						<th><a class="btn btn-primary" target="_blank" th:href="@{|/pizzeria/show/${p.id}|}"> 
 							<i class="bi bi-search"></i>
 							</a>

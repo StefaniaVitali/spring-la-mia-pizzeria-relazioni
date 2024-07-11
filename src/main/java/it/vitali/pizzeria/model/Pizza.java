@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.Id;
 
@@ -24,15 +25,12 @@ public class Pizza {
 	private String nome;
 	
 	@NotBlank(message="il campo descrizione deve essere compilato")
-	@Size(max=200)
 	private String descrizione;
 	
 	@Column(name = "immagine")
 	private String url;
 	
-	@NotBlank(message= "il campo prezzo deve essere compilato")
-	@Min(3)
-	@Column(columnDefinition = "float(6,2)")
+	@NotNull(message= "il campo prezzo deve essere compilato")
 	private float prezzo;	
 	
 	
