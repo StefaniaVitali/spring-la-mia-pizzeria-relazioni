@@ -11,6 +11,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 
 
@@ -37,6 +40,14 @@ public class Pizza {
 	
 	@OneToMany(mappedBy= "pizza")
 	private List <OffertaSpeciale> offerteSpeciali;
+	
+	@ManyToMany()
+	@JoinTable(
+			name="pizza_ingredienti",
+			joinColumns = @JoinColumn(name="pizza_id"),
+			inverseJoinColumns = @JoinColumn(name = "ingrediente_id")
+			)
+	private List<Ingrediente> ingredienti;
 	
 	
 	//GETTER E SETTER
