@@ -1,5 +1,6 @@
 package it.vitali.pizzeria.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.vitali.pizzeria.model.OffertaSpeciale;
 import it.vitali.pizzeria.model.Pizza;
+import it.vitali.pizzeria.repository.OffertaSpecialeRepository;
 import it.vitali.pizzeria.repository.PizzaRepository;
 import jakarta.validation.Valid;
 
@@ -24,6 +27,9 @@ public class PizzaController {
 	
 	@Autowired
 	private PizzaRepository repository;
+	
+	@Autowired
+	private OffertaSpecialeRepository offertaRepository;	
 	
 	@GetMapping
 	public String index(Model model, @RequestParam(name="nome", required = false) String nome) {
@@ -103,6 +109,22 @@ public class PizzaController {
 		
 	}
 	
+	@GetMapping("/{id}/offer")
+	public String offer(@PathVariable("id") Integer id, Model model) {
+		
+		Pizza pizza = repository.findById(id).get();
+		OffertaSpeciale offerta = new OffertaSpeciale();
+		offerta.setNomeOfferta("Sconto poraccio");
+		offerta.setDataInizioOfferta(LocalDateTime.now());
+		offerta.setPizza(pizza);
+		
+		model.addAttribute("offerta", offerta);
+		
+		return "offerte/edit";
+		
+	}
+
+
 
 //fine classe
 }

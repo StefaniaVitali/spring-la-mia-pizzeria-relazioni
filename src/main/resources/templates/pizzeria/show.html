@@ -13,12 +13,47 @@
 
 <body>
 	<div class="container">
-	<div>
+	<div class="mb-5">
 		<h1 class="text-center">Dettaglio della pizza</h1>
 				<h2 class="text-center" th:text="${pizza.nome}"></h2>
-				<img class="rounded float-start me-5" height="400" width="400" alt="immagine_pizza" th:src="${pizza.url}" />
+				<div>
+					<img class="rounded float-start me-5 mb-5" height="400" width="400" alt="immagine_pizza" th:src="${pizza.url}" />
+				</div>
 				<p class="ms-5 py-5" th:text="|DETTAGLIO INGREDIENTI: ${pizza.descrizione}|"></p>
 	</div>
+	 <section>
+		<div>
+			<table class="table table-striped my-5">
+						<caption>
+						<p class="fw-3" th:text="|Dettaglio offerte pizza ${pizza.nome}|">I miei dati</p>
+						</caption>
+									<thead>
+										<tr>
+											<th>NOME</th>
+											<th>INIZIO OFFERTA</th>
+											<th>FINE OFFERTA</th>
+											<th>NOTE</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="offerta : ${pizza.offerteSpeciali}">
+											<td th:text="${offerta.nomeOfferta}"></td>
+											<td th:text="${offerta.dataInizioOfferta}"></td>
+											<td th:text="${offerta.dataFineOfferta}"></td>
+											<td>Questa offerta è bla bla bla</td>
+											<td></td>							
+					
+										</tr>
+									</tbody>
+								</table>
+		</div>
+		<div class="mb-3">			
+       <a class="btn btn-primary" th:href="@{/pizzeria/{id}/offer(id=${pizza.id})}">Aggiungi offerta</a>
+	   <a class="btn btn-primary" th:href="@{/pizzeria}">Torna alla Homepage</a>	
+		</div>
+	 </section>
+	  
 	</div>
 
 	<!-- Bootstrap Bundle with Popper -->

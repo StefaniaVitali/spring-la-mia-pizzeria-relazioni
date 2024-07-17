@@ -1,15 +1,17 @@
 package it.vitali.pizzeria.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 
 @Entity
@@ -33,9 +35,11 @@ public class Pizza {
 	@NotNull(message= "il campo prezzo deve essere compilato")
 	private float prezzo;	
 	
+	@OneToMany(mappedBy="pizza")
+	public List <OffertaSpeciale> offerteSpeciali;
+	
 	
 	//GETTER E SETTER
-	
 	public Integer getId() {
 		return id;
 	}
@@ -66,6 +70,13 @@ public class Pizza {
 	}
 	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
+	}
+	
+	public List<OffertaSpeciale> getOffertaSpeciale() {
+		return offerteSpeciali;
+	}
+	public void setOffertaSpeciale(List<OffertaSpeciale> offerteSpeciali) {
+		this.offerteSpeciali = offerteSpeciali;
 	}
 	
 	

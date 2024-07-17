@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}" />
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+	<title>EDIT OFFERTA</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<h1 class="fs-2">Offerta per <span th:text="${offerta.pizza.nome}"></span></h1>
+		<div class="col-4">
+
+			<form id="offerta-form" th:object="${offerta}" th:action="@{/offerte/create}" th:method="post">
+				<div>
+
+				</div>
+				<div class="mb-3">
+					<label for="nome-pizza" class="form-label" aria-disabled="true">Nome pizza</label>
+					<input type="text" id="nome-offerta" th:field="*{pizza.nome}" class="form-control">
+				</div>
+				<div class="mb-3">
+					<label for="nome-offerta" class="form-label">Nome offerta*</label>
+					<input type="text" id="nome-offerta" th:field="*{nomeOfferta}" class="form-control">
+				</div>
+				<div class="mb-3">
+					<label for="inizio-offerta" class="form-label">Inizio offerta*</label>
+					<input type="datetime-local" id="inizio-offerta" th:field="*{dataInizioOfferta}"
+						class="form-control">
+				</div>
+				<div class="mb-3">
+					<label for="fine-offerta" class="form-label">Fine offerta*</label>
+					<input type="datetime-local" id="fine-offerta" th:field="*{dataFineOfferta}" class="form-control">
+				</div>
+				<button class="btn btn-primary">Modifica</button>
+
+			</form>
+		</div>
+
+	</div>
+
+	<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
