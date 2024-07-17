@@ -21,14 +21,11 @@
 		<h1 class="fs-2">Offerta per <span th:text="${offerta.pizza.nome}"></span></h1>
 		<div class="col-4">
 
-			<form id="offerta-form" th:object="${offerta}" th:action="@{/offerte/create}" th:method="post">
-				<div>
-
-				</div>
-				<div class="mb-3">
-					<label for="nome-pizza" class="form-label" aria-disabled="true">Nome pizza</label>
-					<input type="text" id="nome-offerta" th:field="*{pizza.nome}" class="form-control">
-				</div>
+			<form id="offerta-form" 
+			th:object="${offerta}" 
+			th:action="${editMode} ? @{|/offerte/edit/${offerta.id}|} : @{/offerte/create}" th:method="post">
+			
+				<input type="hidden" th:field="${offerta.pizza}" id="pizza">
 				<div class="mb-3">
 					<label for="nome-offerta" class="form-label">Nome offerta*</label>
 					<input type="text" id="nome-offerta" th:field="*{nomeOfferta}" class="form-control">
@@ -45,6 +42,7 @@
 				<button class="btn btn-primary">Modifica</button>
 
 			</form>
+			<a class="btn btn-primary my-5" th:href="@{/pizzeria}">Ritorna alla lista</a>
 		</div>
 
 	</div>

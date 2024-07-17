@@ -23,6 +23,8 @@
 	</div>
 	 <section>
 		<div>
+
+				
 			<table class="table table-striped my-5">
 						<caption>
 						<p class="fw-3" th:text="|Dettaglio offerte pizza ${pizza.nome}|">I miei dati</p>
@@ -37,16 +39,21 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="offerta : ${pizza.offerteSpeciali}">
-											<td th:text="${offerta.nomeOfferta}"></td>
-											<td th:text="${offerta.dataInizioOfferta}"></td>
-											<td th:text="${offerta.dataFineOfferta}"></td>
+										<tr th:each="of : ${pizza.offerteSpeciali}">
+											<td th:text="${of.nomeOfferta}"></td>
+											<td th:text="${of.dataInizioOfferta}"></td>
+											<td th:text="${of.dataFineOfferta}"></td>
 											<td>Questa offerta è bla bla bla</td>
 											<td></td>							
 					
 										</tr>
 									</tbody>
 								</table>
+		
+			
+		
+				<p>Non ci sono offerte diponibili per questa pizza</p>
+			</div>
 		</div>
 		<div class="mb-3">			
        <a class="btn btn-primary" th:href="@{/pizzeria/{id}/offer(id=${pizza.id})}">Aggiungi offerta</a>

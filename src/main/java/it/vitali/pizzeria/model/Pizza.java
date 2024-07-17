@@ -35,8 +35,8 @@ public class Pizza {
 	@NotNull(message= "il campo prezzo deve essere compilato")
 	private float prezzo;	
 	
-	@OneToMany(mappedBy="pizza")
-	public List <OffertaSpeciale> offerteSpeciali;
+	@OneToMany(mappedBy= "pizza")
+	private List <OffertaSpeciale> offerteSpeciali;
 	
 	
 	//GETTER E SETTER
