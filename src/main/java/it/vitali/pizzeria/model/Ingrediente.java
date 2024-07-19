@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="ingrediente")
@@ -19,7 +19,7 @@ public class Ingrediente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-    @NotNull
+    @NotBlank(message = "Ogni ingrediente necessita di un nome")
     @Column(name="nome_ingrediente", nullable=false)
 	private String nome;
 	

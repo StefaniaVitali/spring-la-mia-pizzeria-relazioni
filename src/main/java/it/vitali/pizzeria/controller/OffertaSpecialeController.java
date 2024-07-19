@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.vitali.pizzeria.model.OffertaSpeciale;
+import it.vitali.pizzeria.model.Pizza;
 import it.vitali.pizzeria.repository.OffertaSpecialeRepository;
+import it.vitali.pizzeria.repository.PizzaRepository;
 import jakarta.validation.Valid;
 
 @Controller
@@ -20,6 +22,9 @@ public class OffertaSpecialeController {
 	
 	@Autowired
 	private OffertaSpecialeRepository offertaRepository;
+	
+	@Autowired
+	private PizzaRepository repository;
 	
 	@PostMapping("/create")
 	public String store (@ModelAttribute("offerta") OffertaSpeciale offerta, Model model , BindingResult bindingResult ) {
@@ -47,8 +52,26 @@ public class OffertaSpecialeController {
 	
 	
 	
+	@PostMapping("/delete/{id}") 
+	public String delete (@PathVariable("id") Integer idOfferta, Model model) {
+		
+		offertaRepository.deleteById(idOfferta);
+		
+		return "redirect:/pizzeria";
+		
+	}
+	
+	
+	
 	
 	
 
 //fine classe
 }
+
+
+/*
+ * COMMENTO:
+ * -cercare di fare il redirect sulla stessa pagina
+ * -creare il postmapping per la modifica
+ */

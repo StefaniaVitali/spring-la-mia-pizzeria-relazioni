@@ -51,6 +51,8 @@ public class PizzaController {
 	@GetMapping("/show/{id}")
 	public String show(@PathVariable("id") Integer pizzaId, Model model) {
 		
+	//	Pizza pizza = repository.getReferenceById(pizzaId);
+	//	pizza.getOffertaSpeciale()
 		model.addAttribute("pizza", repository.getReferenceById(pizzaId));
 		return "pizzeria/show";
 	}
