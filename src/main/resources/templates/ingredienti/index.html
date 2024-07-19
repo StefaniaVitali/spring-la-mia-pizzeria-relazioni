@@ -14,7 +14,30 @@
 
 <body>
 	<div class="container">
-		<h1 class="text-center">Gli ingredienti della pizzeria:</h1>
+		<h1 class="text-center mb-5">Gli ingredienti della pizzeria:</h1>
+
+		<div>
+			<ul style="list-style-type: none">
+				<li th:each="ingrediente : ${listaIngredienti}">
+					<div class="d-flex justify-content-center row-col-6">
+						
+					<div class="col-3 mx-2">
+						<p class="h5 text-end" th:text="*{ingrediente.nome}"></p>
+					</div>	
+											
+				    <div class="col-3 mx-2" >						
+					<form th:action="@{/ingrediente/delete/{id}(id=${ingrediente.id})}" method="post">
+						<button class="btn btn-danger m-1" type="submit" id="submitButton"
+							th:data-confirm-delete="|Sei sicuro di voler eliminare questo ingrediente?|"
+							onclick="if(!confirm(this.getAttribute('data-confirm-delete'))) return false"><i class="bi bi-trash"></i>
+						</button>
+					</form>
+					</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
 
 
 		<div class="d-flex flex-row mb-3 justify-content-center my-5">
@@ -38,24 +61,14 @@
 						</ul>
 					</div>
 					<div class="col-1">
-						<button class="btn btn-primary" type="summit"><i class="bi bi-pencil"></i></button>
+						<button class="btn btn-primary" type="summit"><i class="bi bi-plus-square"></i></button>
 					</div>
 
 				</form>
 			</div>
 
 		</div>
-		
-		<div>
-				<ul>
-					<li th:each="ingrediente : ${listaIngredienti}">
-						<p th:text="*{ingrediente.nome}"></p>
-					</li>
-
-				</ul>
-			</div>
-
-
+		<a class="btn btn-primary" th:href="@{|/pizzeria|}">Torna alla home <i class="bi bi-house-door"></i></a>
 	</div>
 
 
