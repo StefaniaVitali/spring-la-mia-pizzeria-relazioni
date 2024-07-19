@@ -16,7 +16,8 @@
 		<div>
 			<h1 class="text-center">Aggiorna la pizza in catalogo</h1>
 
-			<form id="pizza-form" th:object="${pizza}" th:action="@{/pizzeria/edit/{id}(id=${pizza.id})}" th:method="post">
+			<form id="pizza-form" th:object="${pizza}" th:action="@{/pizzeria/edit/{id}(id=${pizza.id})}"
+				th:method="post">
 
 				<div th:if="${#fields.hasAnyErrors()}">
 					<ul>
@@ -31,7 +32,7 @@
 					<input type="text" id="nome" th:field="*{nome}" class="form-control">
 				</div>
 				<div class="mb-3 col-3">
-					<label for="descrizione" class="form-label">Ingredienti pizza*:</label>
+					<label for="descrizione" class="form-label">Descrizione pizza*:</label>
 					<textarea id="descrizione" name="descrizione" rows="4" cols="50"
 						th:field="*{descrizione}"></textarea>
 				</div>
@@ -43,6 +44,15 @@
 					<label for="prezzo" class="form-label">Prezzo*</label>
 					<input type="number" id="prezzo" th:field="*{prezzo}" class="form-control"
 						th:errorClass="is-invalid">
+				</div>
+				<div class="mb-3">
+					<h6>Seleziona gli ingredienti della pizza</h6>
+
+					<th:block th:each="ingrediente : ${ingredienti}">
+						<input type="checkbox" name="ingrediente" th:value="${ingrediente.id}"
+							th:field="*{ingredienti}" />
+						<label th:text="${ingrediente.nome}"></label>
+					</th:block>
 				</div>
 
 				<button class="btn btn-primary">Save</button>

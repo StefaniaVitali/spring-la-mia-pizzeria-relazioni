@@ -54,6 +54,7 @@ public class Pizza {
 	public Integer getId() {
 		return id;
 	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -88,6 +89,13 @@ public class Pizza {
 	}
 	public void setOffertaSpeciale(List<OffertaSpeciale> offerteSpeciali) {
 		this.offerteSpeciali = offerteSpeciali;
+	}
+	
+	public List<Ingrediente> getIngredienti() {
+		return ingredienti;
+	}
+	public void setIngredienti(List<Ingrediente> ingredienti) {
+		this.ingredienti = ingredienti;
 	}
 	
 	

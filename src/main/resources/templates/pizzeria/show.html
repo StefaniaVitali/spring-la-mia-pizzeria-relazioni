@@ -23,6 +23,12 @@
 			</div>
 			<p class="ms-5 py-5" th:text="|DETTAGLIO INGREDIENTI: ${pizza.descrizione}|"></p>
 		</div>
+		<div>
+				<p class="h4">La lista degli ingredienti della pizza</p>
+				<ul>
+					<li th:each="ingrediente : ${pizza.ingredienti}" th:text="${ingrediente.nome}"></li>
+				</ul>
+			  </div>
 		<section>
 			<div>
 
@@ -67,9 +73,8 @@
 					</tbody>
 				</table>
 
-
-
-				<p>Non ci sono offerte diponibili per questa pizza</p>
+      
+                 
 			</div>
 			<div class="mb-3">
 				<a class="btn btn-primary" th:href="@{/pizzeria/{id}/offer(id=${pizza.id})}">Aggiungi offerta</a>

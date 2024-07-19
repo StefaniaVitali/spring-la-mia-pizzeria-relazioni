@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.vitali.pizzeria.model.OffertaSpeciale;
 import it.vitali.pizzeria.model.Pizza;
+import it.vitali.pizzeria.repository.IngredienteRepository;
 import it.vitali.pizzeria.repository.OffertaSpecialeRepository;
 import it.vitali.pizzeria.repository.PizzaRepository;
 import jakarta.validation.Valid;
@@ -30,6 +31,9 @@ public class PizzaController {
 	
 	@Autowired
 	private OffertaSpecialeRepository offertaRepository;	
+	
+	@Autowired
+	private IngredienteRepository ingredienteRepository;
 	
 	@GetMapping
 	public String index(Model model, @RequestParam(name="nome", required = false) String nome) {
@@ -61,6 +65,7 @@ public class PizzaController {
 	public String create(Model model) {
 		
 		model.addAttribute("pizza", new Pizza()); //-> Questo è il costruttore vuoto
+		model.addAttribute("ingredienti", ingredienteRepository.findAll());
 		
 		return "pizzeria/create";
 	}
@@ -84,8 +89,9 @@ public class PizzaController {
 	public String edit(@PathVariable("id") Integer id, Model model) {
 		
 		model.addAttribute("pizza", repository.findById(id).get());
+		model.addAttribute("ingredienti", ingredienteRepository.findAll());
 		
-		return "pizzeria/edit";
+		return "pizzeria/edit";	
 	}
 	
 	@PostMapping("/edit/{id}")

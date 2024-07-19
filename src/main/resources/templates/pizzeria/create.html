@@ -44,6 +44,15 @@
 					<input type="number" step="0.01" id="prezzo" th:field="*{prezzo}" class="form-control"
 						th:errorClass="is-invalid">
 				</div>
+				<div class="mb-3">
+					<h6>Seleziona gli ingredienti della pizza</h6>
+
+					<th:block th:each="ingrediente : ${ingredienti}">
+						<input type="checkbox" name="ingrediente" th:value="${ingrediente.id}"
+							th:field="*{ingredienti}" />
+						<label th:text="${ingrediente.nome}"></label>
+					</th:block>
+				</div>
 
 				<button class="btn btn-primary">Invia</button>
 				<button class="btn btn-primary">Cancella tutto</button>
